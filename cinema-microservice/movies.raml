@@ -1,0 +1,43 @@
+#%RAML 1.0
+title: cinema
+version: v1
+baseUri: / 
+
+types: 
+    Movie:
+        properties: 
+            id: string
+            title: string
+            runtime: number
+            format: string
+            releaseYear: number
+            releaseMonth: number
+            releaseDay: number 
+        example:
+            id: "123derrsaerrebb"
+            title: "Star Wars: Episódio V - O Império Contra-Ataca"
+            runtime: 120
+            format: "Normal"
+            plot: "Lorem ipsum dolor sit amet"
+            releaseYear: 1980
+            releaseMonth: 5
+            releaseDay: 21
+
+    MoviePremieres:
+        type: Movie []
+
+resourceTypes: 
+    Collection:
+        get:
+            responses:
+                200:
+                    body:
+                        application/json:
+                            type: <<item>>
+
+/movies:
+    /premieres:
+        type: { Collection { item: MoviePremieres } }
+    
+    /{id}:
+        type: { Collection: { item: Movie } }
