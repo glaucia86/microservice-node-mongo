@@ -7,7 +7,7 @@ Repositório para fins de estudos relacionado a desenvolvimento Microserviços c
 - Node.js
 - Express.js
 - MongoDb
-- Conceito de Microservices
+- Conceito de Microservices Architecture
 - Design de APIs c/ RAML - Mais infos [AQUI](https://raml.org/)
 - Deploy via Docker
 
