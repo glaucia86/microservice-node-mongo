@@ -8,15 +8,15 @@
 const server = require('./server')
 
 describe('Teste: Server', () => {
-    it('Deve requerer a porta do servidor para iniciar a aplicação', () => {
-        return server.start({
-            repo: {}
-        }).should.be.rejectedWith(/port/)
-    })
+  it('Deve requerer a porta do servidor para iniciar a aplicação', () => {
+    return server.start({
+      repo: {}
+    }).should.be.rejectedWith(/port/)
+  })
 
-    it('Deve requerer um repositório para iniciar a aplicação', () => {
-        return server.start({
-            port: {}
-        }).should.be.rejectedWith(/repository/)
-    })
+  it('Deve requerer um repositório para iniciar a aplicação', () => {
+    return server.start({
+      port: {}
+    }).should.be.rejectedWith(/repository/)
+  })
 })
