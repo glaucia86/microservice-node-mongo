@@ -18,35 +18,35 @@ console.log('---- Serviços dos Filmes ----')
 console.log('Conectando com os repositórios dos filmes....')
 
 process.on('uncaughtException', (error) => {
-    console.error('Ocorreu um erro de Exception aqui', error)
+  console.error('Ocorreu um erro de Exception aqui', error)
 })
 
 process.on('uncaughtException', (error, promise) => {
-    console.error('Ocorreu um erro de Rejection aqui', error)
+  console.error('Ocorreu um erro de Rejection aqui', error)
 })
 
 mediator.on('db.ready', (db) => {
-    let rep
-    repository.connect(db)
-        .then(repo => {
-            console.log('Aplicação conectada ao repositório. Iniciando o serviço!')
-            rep = repo
-            return server.start({
-                port: config.serverSettings.port,
-                ssl: config.serverSettings.ssl,
-                repo
-            })
-        })
-        .then(app => {
-            console.log(`Aplicação conectada com sucesso. Executando na porta: ${config.serverSettings.port}.`)
-            app.on('close', () => {
-                rep.disconnect()
-            })    
-        })
+  let rep
+  repository.connect(db)
+    .then(repo => {
+      console.log('Aplicação conectada ao repositório. Iniciando o serviço!')
+      rep = repo
+      return server.start({
+        port: config.serverSettings.port,
+        ssl: config.serverSettings.ssl,
+        repo
+      })
+    })
+    .then(app => {
+      console.log(`Aplicação conectada com sucesso. Executando na porta: ${config.serverSettings.port}.`)
+      app.on('close', () => {
+        rep.disconnect()
+      })
+    })
 })
 
 mediator.on('db.error', (error) => {
-    console.log(error)
+  console.log(error)
 })
 
 // Aqui vamos carregar a conexão para o repositório:
