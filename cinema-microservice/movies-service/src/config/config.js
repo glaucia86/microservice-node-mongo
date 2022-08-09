@@ -12,9 +12,9 @@ const dbSettings = {
   pass: process.env.DB_PASS || 'teste123456',
   repl: process.env.DB_REPLS || 'rs1',
   servers: (process.env.DB_SERVERS) ? process.env.DB_SERVERS.split(' ') : [
-    '192.168.99.100:27017',
-    '192.168.99.101:27017',
-    '192.168.99.102:27017'
+    '127.0.0.1:27017',
+    '127.0.0.2:27017',
+    '127.0.0.3:27017'
   ],
   dbParameters: () => ({
     w: 'majority',
